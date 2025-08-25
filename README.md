@@ -103,3 +103,8 @@ If you have any questions, feel free to reach out:
 
 ✉️ [mattis.pfenning@email.uni-freiburg.de](mailto:mattis.pfenning@email.uni-freiburg.de)
 
+
+## Reference
+Koster, R. D., and S. P. P. Mahanama, 2012: Land surface controls on hydroclimatic means and variability. J. Hydrometeor., 13, 1604 1620, doi:10.1175/JHM-D-12-050.1.
+
+
