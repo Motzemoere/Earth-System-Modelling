@@ -22,13 +22,13 @@ Follow these steps to set up the environment and run the model.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-repo>/Earth-System-Modelling.git
+git clone https://github.com/Motzemoere/Earth-System-Modelling.git
 cd Earth-System-Modelling
 ```
 
 ### 2. Install Conda
 
-If you do not have Conda installed, download **Miniforge**:
+If you do not have Conda installed, download **Miniforge** for your system:
 
 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
 
@@ -59,7 +59,7 @@ An example file is provided in the data/ folder:
 
 ### ⚙️ Configuration
 
-The model uses a configuration dictionary with these parameters:
+The model uses a configuration dictionary with these example parameters:
 
 | Parameter | Description                      | Example |
 | --------- | -------------------------------- | ------- |
@@ -68,7 +68,7 @@ The model uses a configuration dictionary with these parameters:
 | `g`       | ET function shape (γ)            | 0.5     |
 | `b0`      | Maximum of ET function (β)       | 0.8     |
 
-Example:
+Python example:
 
 ```python
 config = {
@@ -85,4 +85,9 @@ You can find a complete example workflow, including how to run the SWBM model, p
 
 ➡️ [`run_swbm.py`](run_swbm.py)
 
+### 📬 Contact
+
+If you have any questions, feel free to reach out:
+
+✉️ [mattis.pfenning@email.uni-freiburg.de](mailto:mattis.pfenning@email.uni-freiburg.de)
 
