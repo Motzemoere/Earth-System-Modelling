@@ -37,3 +37,61 @@ def runoff(w_i, c_s, a):
 
 def predict(curr_moist, evapo, wrunoff, precip, rad):
     return curr_moist + (precip - (evapo * rad) - (wrunoff * precip))
+
+def predict_ts(data, config, n_days=None):
+    """Run the SMBW for given time series
+
+    :param data: input data (pandas df) (time, lat, long, tp, sm, ro, le, snr)
+    :param config: parameters
+                   - water holding capacity (c_s),
+                   - maximum of ET function (b0),
+                   - ET function shape (g),
+                   - runoff function shape (a))
+    :param n_days: time series length (default: None)
+    :return: soil moisture, runoff, ET (for entire ts) (numpy arrays)
+    """
+    n_days = data.shape[0] if n_days is None else n_days
+
+    # Initialize arrays for model outputs
+    moists, runoffs, ets = np.zeros(n_days), np.zeros(n_days), np.zeros(n_days)
+    curr = {}  # to temporarily store parameters in loop
+
+    # Initial soil moisture (90% of soil water holding capacity)
+    moists[0] = 0.9 * config['c_s']
+    
+    # Parameters
+    c_s = config['c_s']
+    b0 = config['b0']
+    g = config['g']
+    a = config['a']
+
+    for i in range(n_days):
+
+        # Compute evapotrans. and runoff
+        ets[i] = et(b0, moists[i], c_s, g)
+        runoffs[i] = runoff(moists[i], c_s, a)
+
+        # Compute soil moisture
+        if i < n_days - 1:
+            moists[i + 1] = predict(moists[i], ets[i], runoffs[i],
+                                    data['tp'][i], data['snr'][i])
+
+    return moists, runoffs * np.asarray(data['tp']), ets * np.asarray(data['snr'])
+
+def model_correlation(data, model_outputs):
+    """
+    Calculate correlation between observed data and model outputs.
+
+    :param data: pandas DataFrame with columns 'sm', 'ro', 'le' (observed)
+    :param model_outputs: tuple of numpy arrays (moists, runoffs, ets)
+    :return: dict with individual correlations and sum of correlations
+    """
+    moists, runoffs, ets = model_outputs
+    
+    corr_sm = np.corrcoef(data['sm'], moists)[0, 1]
+    corr_ro = np.corrcoef(data['ro'], runoffs)[0, 1]
+    corr_et = np.corrcoef(data['le'], ets)[0, 1]
+    
+    corr_sum = corr_sm + corr_ro + corr_et
+    
+    return {'sm': corr_sm, 'ro': corr_ro, 'et': corr_et, 'sum': corr_sum}
