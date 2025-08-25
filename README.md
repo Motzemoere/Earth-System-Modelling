@@ -1,6 +1,6 @@
 # 🌍 Earth-System-Modelling
 
-This repository contains a **simple water balance model (SWBM)** used in the **Earth System Modelling** course.  
+This repository contains the **simple water balance model (SWBM)** used in the **Earth System Modelling** course.  
 It is designed to demonstrate the most basic version of the model.
 
 ---
