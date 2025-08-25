@@ -19,6 +19,12 @@ It is designed to demonstrate the most basic version of the model.
 
 Follow these steps to set up the environment and run the model.
 
+### 0. Install Git
+
+If you do not have Git installed on your system, download and install it from:
+
+🌐 [Git Downloads](https://git-scm.com/downloads)
+
 ### 1. Clone the Repository
 
 ```bash
