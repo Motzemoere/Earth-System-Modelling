@@ -47,11 +47,17 @@ conda activate esm
 The model requires an input CSV file with the following variables:
 
 📅 time: Date or timestamp
+
 🌐 latitude and longitude
+
 ☔ tp_[mm]: Precipitation in mm
+
 🌱 sm_[m3/m3]: Soil moisture
+
 🌊 ro_[m]: Runoff
+
 🔥 le_[W/m2]: Latent heat flux
+
 ☀️ snr_[MJ/m2]: Surface net radiation
 
 An example file is provided in the data/ folder:
