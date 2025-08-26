@@ -20,6 +20,14 @@ config = {
 # Run the SWBM model
 moisture, runoff, et_flux = swbm_mini.predict_ts(test, config)
 
+# Compute correlation over the whole timeseries
+corrs = swbm_mini.model_correlation(test, (moisture, runoff, et_flux))
+print("Correlation between observed data and model outputs:\n")
+print(f"Soil Moisture (sm):    {corrs['sm']:.3f}")
+print(f"Runoff (ro):           {corrs['ro']:.3f}")
+print(f"Evapotranspiration (et): {corrs['et']:.3f}")
+print(f"\nSum of correlations:   {corrs['sum']:.3f}")
+
 # Plot the results
 fig, axes = plt.subplots(3, 1, figsize=(12, 10), sharex=True)
 
@@ -42,10 +50,25 @@ axes[2].set_xlabel('Time')
 plt.tight_layout()
 plt.show()
 
-# Compute correlation
-corrs = swbm_mini.model_correlation(test, (moisture, runoff, et_flux))
-print("Correlation between observed data and model outputs:\n")
-print(f"Soil Moisture (sm):    {corrs['sm']:.3f}")
-print(f"Runoff (ro):           {corrs['ro']:.3f}")
-print(f"Evapotranspiration (et): {corrs['et']:.3f}")
-print(f"\nSum of correlations:   {corrs['sum']:.3f}")
+
+# Plot only one year
+one_year = test[(test['time'] >= "2016-01-01") & (test['time'] <= "2016-12-31")]
+moisture_year = moisture[one_year.index]
+runoff_year = runoff[one_year.index]
+et_flux_year = et_flux[one_year.index]
+fig, axes = plt.subplots(3, 1, figsize=(12, 10), sharex=True)
+# Soil moisture
+axes[0].plot(one_year['time'], moisture_year, color='blue')
+axes[0].set_ylabel('Soil Moisture (mm)')
+axes[0].set_title('Soil Moisture (2015)')
+# Runoff
+axes[1].plot(one_year['time'], runoff_year, color='green')
+axes[1].set_ylabel('Runoff (mm)')
+axes[1].set_title('Runoff (2015)')
+# Evapotranspiration
+axes[2].plot(one_year['time'], et_flux_year, color='orange')
+axes[2].set_ylabel('ET (mm)')
+axes[2].set_title('Evapotranspiration (2015)')
+axes[2].set_xlabel('Time')
+plt.tight_layout()
+plt.show()

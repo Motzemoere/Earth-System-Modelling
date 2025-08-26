@@ -78,20 +78,33 @@ def predict_ts(data, config, n_days=None):
 
     return moists, runoffs * np.asarray(data['tp']), ets * np.asarray(data['snr'])
 
-def model_correlation(data, model_outputs):
+def model_correlation(data, model_outputs, start=None, end=None):
     """
-    Calculate correlation between observed data and model outputs.
+    Calculate correlation between observed data and model outputs,
+    optionally restricted to a timeframe.
 
     :param data: pandas DataFrame with columns 'sm', 'ro', 'le' (observed)
     :param model_outputs: tuple of numpy arrays (moists, runoffs, ets)
+    :param start: str or datetime, start date for analysis (optional)
+    :param end: str or datetime, end date for analysis (optional)
     :return: dict with individual correlations and sum of correlations
     """
     moists, runoffs, ets = model_outputs
-    
+
+    # Apply timeframe selection if provided
+    if start is not None or end is not None:
+        mask = (data['time'] >= pd.to_datetime(start) if start else True) & \
+               (data['time'] <= pd.to_datetime(end) if end else True)
+        data = data.loc[mask]
+        moists = moists[data.index]
+        runoffs = runoffs[data.index]
+        ets = ets[data.index]
+
+    # Compute correlations
     corr_sm = np.corrcoef(data['sm'], moists)[0, 1]
     corr_ro = np.corrcoef(data['ro'], runoffs)[0, 1]
     corr_et = np.corrcoef(data['le'], ets)[0, 1]
-    
+
     corr_sum = corr_sm + corr_ro + corr_et
-    
+
     return {'sm': corr_sm, 'ro': corr_ro, 'et': corr_et, 'sum': corr_sum}
