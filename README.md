@@ -42,13 +42,20 @@ If you do not have Conda installed, download **Miniforge** for your system:
 
 Use the provided `environment.yml` file to create a Python environment with all dependencies:
 
+Run and confirm this in your miniforge prombt:
 ```bash
 cd Earth-System-Modelling
 conda env create -f environment.yml
 conda activate esm
 ```
 
-🗂 Input Data
+Or create the environment manually:
+```bash
+conda create -n esm python pandas numpy matplotlib -y
+conda activate esm
+```
+
+### 🗂 Input Data
 
 The model requires an input CSV file with the following variables:
 
