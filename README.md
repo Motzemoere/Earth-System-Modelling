@@ -21,7 +21,7 @@ Follow these steps to set up the environment and run the model.
 
 ### 0. Install Git
 
-If you do not have Git installed on your system, download and install it from:
+If you do not have Git installed on your system, download and install **Git** for your system:
 
 🌐 [Git Downloads](https://git-scm.com/downloads)
 
@@ -34,7 +34,7 @@ cd Earth-System-Modelling
 
 ### 2. Install Conda
 
-If you do not have Conda installed, download **Miniforge** for your system:
+If you do not have Conda installed, download and install **Miniforge** for your system:
 
 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
 
