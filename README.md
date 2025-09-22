@@ -36,7 +36,7 @@ cd Earth-System-Modelling
 
 If you do not have Conda installed, download and install **Miniforge** for your system:
 
-[Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
+🌐 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
 
 ### 3. Create and Activate the Environment
 
