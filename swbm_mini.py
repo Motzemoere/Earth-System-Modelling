@@ -26,22 +26,24 @@ def prepro(raw_data):
             # of water in J/kg)
             'snr': raw_data['snr_[MJ/m2]'] * (1 / 2.26),
             }
-
     return pd.DataFrame(data)
 
 def et(b0, w_i, c_s, g):
+    """Compute proportion of maximum ET that occurs given current soil moisture."""
     return b0 * (w_i / c_s) ** g
 
 def runoff(w_i, c_s, a):
+    """Compute runoff fraction."""
     return (w_i / c_s) ** a
 
 def predict(curr_moist, evapo, wrunoff, precip, rad):
+    """Update soil moisture for next step."""
     return curr_moist + (precip - (evapo * rad) - (wrunoff * precip))
 
 def predict_ts(data, config, n_days=None):
     """Run the SMBW for given time series
 
-    :param data: input data (pandas df) (time, lat, long, tp, sm, ro, le, snr)
+    :param data: input data (pandas df) (time, tp, sm, ro, le, snr)
     :param config: parameters
                    - water holding capacity (c_s),
                    - maximum of ET function (b0),
@@ -54,7 +56,6 @@ def predict_ts(data, config, n_days=None):
 
     # Initialize arrays for model outputs
     moists, runoffs, ets = np.zeros(n_days), np.zeros(n_days), np.zeros(n_days)
-    curr = {}  # to temporarily store parameters in loop
 
     # Initial soil moisture (90% of soil water holding capacity)
     moists[0] = 0.9 * config['c_s']
@@ -66,17 +67,19 @@ def predict_ts(data, config, n_days=None):
     a = config['a']
 
     for i in range(n_days):
-
-        # Compute evapotrans. and runoff
+        # Compute evapotrans. and runoff fractions
         ets[i] = et(b0, moists[i], c_s, g)
         runoffs[i] = runoff(moists[i], c_s, a)
 
-        # Compute soil moisture
-        if i < n_days - 1:
+        # Compute soil moisture for the next timestep
+        if i < n_days - 1: # Avoid updating beyond the last index
             moists[i + 1] = predict(moists[i], ets[i], runoffs[i],
                                     data['tp'][i], data['snr'][i])
 
-    return moists, runoffs * np.asarray(data['tp']), ets * np.asarray(data['snr'])
+    # Convert runoff and ET fractions to actual fluxes
+    runoffs = runoffs * np.asarray(data['tp'])
+    ets = ets * np.asarray(data['snr'])
+    return moists, runoffs, ets
 
 def model_correlation(data, model_outputs, start=None, end=None):
     """
