@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
+
 # Import the model
 import swbm_mini
 
@@ -8,6 +10,7 @@ data = pd.read_csv("data/Data_swbm_Germany.csv")
 
 # Prepare the data
 test = swbm_mini.prepro(data)
+
 
 # Define initial parameters
 config = {
