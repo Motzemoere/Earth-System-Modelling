@@ -9,7 +9,7 @@ import swbm_mini
 data = pd.read_csv("data/Data_swbm_Germany.csv")
 
 # Prepare the data
-test = swbm_mini.prepro(data)
+data_prepro = swbm_mini.prepro(data)
 
 
 # Define initial parameters
@@ -21,10 +21,10 @@ config = {
 }
 
 # Run the SWBM model
-moisture, runoff, et_flux = swbm_mini.predict_ts(test, config)
+moisture, runoff, et_flux = swbm_mini.predict_ts(data_prepro, config)
 
 # Compute correlation over the whole timeseries
-corrs = swbm_mini.model_correlation(test, (moisture, runoff, et_flux))
+corrs = swbm_mini.model_correlation(data_prepro, (moisture, runoff, et_flux))
 print("Correlation between observed data and model outputs:\n")
 print(f"Soil Moisture (sm):    {corrs['sm']:.3f}")
 print(f"Runoff (ro):           {corrs['ro']:.3f}")
@@ -35,17 +35,17 @@ print(f"\nSum of correlations:   {corrs['sum']:.3f}")
 fig, axes = plt.subplots(3, 1, figsize=(12, 10), sharex=True)
 
 # Soil moisture
-axes[0].plot(test['time'], moisture, color='blue')
+axes[0].plot(data_prepro['time'], moisture, color='blue')
 axes[0].set_ylabel('Soil Moisture (mm)')
 axes[0].set_title('Soil Moisture')
 
 # Runoff
-axes[1].plot(test['time'], runoff, color='green')
+axes[1].plot(data_prepro['time'], runoff, color='green')
 axes[1].set_ylabel('Runoff (mm)')
 axes[1].set_title('Runoff')
 
 # Evapotranspiration
-axes[2].plot(test['time'], et_flux, color='orange')
+axes[2].plot(data_prepro['time'], et_flux, color='orange')
 axes[2].set_ylabel('ET (mm)')
 axes[2].set_title('Evapotranspiration')
 axes[2].set_xlabel('Time')
