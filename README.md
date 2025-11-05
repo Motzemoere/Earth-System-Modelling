@@ -14,8 +14,7 @@ It is designed to demonstrate the most basic version of the model.
 - 📊 Correlation analysis between model output and observed data
 
 ---
-
-## 🚀 Getting Started
+## 🚀 Getting Started on your Local Machine
 
 Follow these steps to set up the environment and run the model.
 
@@ -103,6 +102,25 @@ config = {
 You can find a complete example workflow, including how to run the SWBM model, plot the results, and compute correlations with observed data, in the following file:
 
 ➡️ [`run_swbm.py`](run_swbm.py)
+
+## 🚀 Getting Started on Google Colab
+To run the SWBM on Google Colab you first need to clone this repository into your google drive:
+1. Open Google Colab
+2. Mount your Google Drive: (run this commands in a code cell)
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+3. Open up a Terminal in google colab and run the following comands:
+```bash
+git config user.email "you@example.com"
+git config user.name "Your Name"
+git clone https://github.com/Motzemoere/Earth-System-Modelling.git
+cd Earth-System-Modelling
+```
+
+Now you can use the [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb) script to run the model
+
 
 ### 📬 Contact
 
