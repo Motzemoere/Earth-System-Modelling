@@ -1,16 +1,19 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
-
+import numpy as np
 
 # Import the model
-import swbm_mini
+# The model is stored in another file
+# all functions are definded there...
+from swbm_mini import prepro, predict_ts, model_correlation
+
+# Now you have access to the functions:
+# prepro() predict_ts() model_correlation()
 
 data = pd.read_csv("data/Data_swbm_Germany.csv")
 
 # Prepare the data
-data_prepro = swbm_mini.prepro(data)
-
+data_prepro = prepro(data)
 
 # Define initial parameters
 config = {
@@ -21,10 +24,10 @@ config = {
 }
 
 # Run the SWBM model
-moisture, runoff, et_flux = swbm_mini.predict_ts(data_prepro, config)
+moisture, runoff, et_flux = predict_ts(data_prepro, config)
 
 # Compute correlation over the whole timeseries
-corrs = swbm_mini.model_correlation(data_prepro, (moisture, runoff, et_flux))
+corrs = model_correlation(data_prepro, (moisture, runoff, et_flux))
 print("Correlation between observed data and model outputs:\n")
 print(f"Soil Moisture (sm):    {corrs['sm']:.3f}")
 print(f"Runoff (ro):           {corrs['ro']:.3f}")
@@ -55,7 +58,7 @@ plt.show()
 
 
 # Plot only one year
-one_year = test[(test['time'] >= "2016-01-01") & (test['time'] <= "2016-12-31")]
+one_year = data[(data['time'] >= "2016-01-01") & (data['time'] <= "2016-12-31")]
 moisture_year = moisture[one_year.index]
 runoff_year = runoff[one_year.index]
 et_flux_year = et_flux[one_year.index]
