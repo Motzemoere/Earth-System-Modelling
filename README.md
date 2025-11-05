@@ -104,23 +104,25 @@ You can find a complete example workflow, including how to run the SWBM model, p
 ➡️ [`run_swbm.py`](run_swbm.py)
 
 ## 🚀 Getting Started on Google Colab
-To run the SWBM on Google Colab you first need to clone this repository into your google drive:
-1. Open Google Colab
-2. Mount your Google Drive: (run this commands in a code cell)
+### 1. Open a new Notebook in Google Colab
+### 2. Mount your Google Drive: (run this commands in a new code cell)
 ```python
 from google.colab import drive
 drive.mount('/content/drive')
+# Follow the instruction to allow access to your google drive
 ```
-3. Open up a Terminal in google colab and run the following comands:
+
+### 3. Clone the Repository into your Google Drive
+Open up a Terminal in google colab  (bottom left corner) and run the following comands:
 ```bash
-git config user.email "you@example.com"
-git config user.name "Your Name"
+cd drive/MyDrive
 git clone https://github.com/Motzemoere/Earth-System-Modelling.git
 cd Earth-System-Modelling
 ```
 
-Now you can use the [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb) script to run the model
-
+### 4. Run the SWBM
+In the repository, there is a complete example flow for running the SWBM: [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb).
+However, to open the script in Colab, you need to go back to Google Drive, navigate to the GitHub repository that you just cloned, and open the script from there using the 'Open with' option, selecting Google Colaboratory.
 
 ### 📬 Contact
 
