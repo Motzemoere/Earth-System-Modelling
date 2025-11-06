@@ -84,7 +84,7 @@ If you do not have Conda installed, download and install **Miniforge** for your 
 
 Use the provided `environment.yml` file to create a Python environment with all dependencies:
 
-Run and confirm this in your miniforge prombt:
+Run and confirm this in your miniforge prompt:
 ```bash
 cd Earth-System-Modelling
 conda env create -f environment.yml
@@ -113,16 +113,17 @@ drive.mount('/content/drive')
 ```
 
 ### 3. Clone the Repository into your Google Drive
-Open up a Terminal in google colab  (bottom left corner) and run the following comands:
+Open up a Terminal in Google Colab  (bottom left corner) and run the following commands:
 ```bash
 cd drive/MyDrive
 git clone https://github.com/Motzemoere/Earth-System-Modelling.git
 cd Earth-System-Modelling
 ```
+Alternatively you could also just clone the repository to your local machine (see above) and then upload it to Google Drive.
 
 ### 4. Run the SWBM
 In the repository, there is a complete example flow for running the SWBM: [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb).
-However, to open the script in Colab, you need to go back to Google Drive, navigate to the GitHub repository that you just cloned, and open the script from there using the 'Open with' option, selecting Google Colaboratory.
+However, to open the script in Colab, you need to go back to **Google Drive**, navigate to the GitHub repository that you just cloned, and open the script from there using the 'Open with' option, selecting Google Colaboratory.
 
 ### 📬 Contact
 
