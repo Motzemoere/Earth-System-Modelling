@@ -14,6 +14,49 @@ It is designed to demonstrate the most basic version of the model.
 - 📊 Correlation analysis between model output and observed data
 
 ---
+## 🗂 Input Data
+
+The model requires an input CSV file with the following variables:
+
+📅 time: Date or timestamp
+
+🌐 latitude and longitude
+
+☔ tp_[mm]: Precipitation in mm
+
+🌱 sm_[m3/m3]: Soil moisture
+
+🌊 ro_[m]: Runoff
+
+🔥 le_[W/m2]: Latent heat flux
+
+☀️ snr_[MJ/m2]: Surface net radiation
+
+An example file is provided in the data/ folder:
+📊 [`Data_swbm_Germany.csv`](data/Data_swbm_Germany.csv)
+
+## ⚙️ Configuration
+
+The model uses a configuration dictionary with these example parameters:
+
+| Parameter | Description                      | Example |
+| --------- | -------------------------------- | ------- |
+| `c_s`     | Soil water holding capacity (mm) | 420     |
+| `a`       | Runoff function shape (α)        | 4       |
+| `g`       | ET function shape (γ)            | 0.5     |
+| `b0`      | Maximum of ET function (β)       | 0.8     |
+
+Python example:
+
+```python
+config = {
+    'c_s': 420,
+    'a': 4,
+    'g': 0.5,
+    'b0': 0.8
+}
+```
+
 ## 🚀 Getting Started on your Local Machine
 
 Follow these steps to set up the environment and run the model.
@@ -52,49 +95,6 @@ Or create the environment manually:
 ```bash
 conda create -n esm python pandas numpy matplotlib -y
 conda activate esm
-```
-
-### 🗂 Input Data
-
-The model requires an input CSV file with the following variables:
-
-📅 time: Date or timestamp
-
-🌐 latitude and longitude
-
-☔ tp_[mm]: Precipitation in mm
-
-🌱 sm_[m3/m3]: Soil moisture
-
-🌊 ro_[m]: Runoff
-
-🔥 le_[W/m2]: Latent heat flux
-
-☀️ snr_[MJ/m2]: Surface net radiation
-
-An example file is provided in the data/ folder:
-📊 [`Data_swbm_Germany.csv`](data/Data_swbm_Germany.csv)
-
-### ⚙️ Configuration
-
-The model uses a configuration dictionary with these example parameters:
-
-| Parameter | Description                      | Example |
-| --------- | -------------------------------- | ------- |
-| `c_s`     | Soil water holding capacity (mm) | 420     |
-| `a`       | Runoff function shape (α)        | 4       |
-| `g`       | ET function shape (γ)            | 0.5     |
-| `b0`      | Maximum of ET function (β)       | 0.8     |
-
-Python example:
-
-```python
-config = {
-    'c_s': 420,
-    'a': 4,
-    'g': 0.5,
-    'b0': 0.8
-}
 ```
 
 ###  🏃Running the Model
