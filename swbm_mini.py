@@ -28,9 +28,15 @@ def prepro(raw_data):
             }
     return pd.DataFrame(data)
 
+# def et(b0, w_i, c_s, g):
+#     """Compute proportion of maximum ET that occurs given current soil moisture."""
+#     return b0 * (w_i / c_s) ** g
+
 def et(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
-    return b0 * (w_i / c_s) ** g
+    return b0 * (w_i / c_s) ** g * 2
+
+
 
 def runoff(w_i, c_s, a):
     """Compute runoff fraction."""
