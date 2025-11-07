@@ -108,7 +108,7 @@ conda activate esm
 
 
 ###  🏃Running the Model
-Open the cloned repository folder in you preffered IDE, select the esm env as your python interpreter and start playing around.
+Open the cloned repository folder in you prefered IDE, select the esm env as your Python interpreter and start playing around.
 
 You can find a complete example workflow, including how to run the SWBM model, plot the results, and compute correlations with observed data, in the following file:
 
@@ -124,7 +124,7 @@ drive.mount('/content/drive')
 ```
 
 ### 3. Clone the Repository into your Google Drive
-Open up a Terminal in Google Colab  (bottom left corner) and run the following commands:
+Open up a terminal in Google Colab  (bottom left corner) and run the following commands:
 ```bash
 cd drive/MyDrive
 git clone https://github.com/Motzemoere/Earth-System-Modelling.git
@@ -134,7 +134,7 @@ Alternatively you could also just clone the repository to your local machine (se
 
 ### 4. Run the SWBM
 In the repository, there is a complete example flow for running the SWBM: [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb).
-However, to open the script in Colab, you need to go back to **Google Drive**, navigate to the GitHub repository that you just cloned, and open the script from there using the 'Open with' option, selecting Google Colaboratory.
+However, to open the script in Colab, you need to go back to **Google Drive**, navigate to the GitHub repository that you just cloned, and open the script from there using the **Open with** option, selecting Google Colaboratory.
 
 ### 📬 Contact
 
