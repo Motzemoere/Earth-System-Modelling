@@ -139,6 +139,7 @@ Alternatively you could also just clone the repository to your local machine (se
 In the repository, there is a complete example flow for running the SWBM: [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb).
 However, to open the script in Colab, you need to go back to **Google Drive**, navigate to the GitHub repository that you just cloned, and open the script from there using the **Open with** option, selecting Google Colaboratory.
 
+---
 ### 📬 Contact
 
 If you have any questions, feel free to reach out:
