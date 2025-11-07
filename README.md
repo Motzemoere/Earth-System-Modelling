@@ -86,7 +86,15 @@ If you do not have Conda installed, download and install **Miniforge** for your 
 
 ### 3. Create and Activate the Environment
 
-Use the provided `environment.yml` file to create a Python environment with all dependencies:
+The easiest way is to just create the environment manually by runnning these commands in the miniforge prompt:
+```bash
+conda create -n esm python pandas numpy matplotlib -y
+conda activate esm
+```
+Alternatively:
+
+Use the provided `environment.yml` file to create a Python environment with all dependencies in one go:
+(this is how its normally done with bigger envs)
 
 Run and confirm this in your miniforge prompt:
 ```bash
@@ -95,11 +103,7 @@ conda env create -f environment.yml
 conda activate esm
 ```
 
-Or create the environment manually:
-```bash
-conda create -n esm python pandas numpy matplotlib -y
-conda activate esm
-```
+
 
 ###  🏃Running the Model
 
