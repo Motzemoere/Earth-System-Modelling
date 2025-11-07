@@ -108,6 +108,7 @@ conda activate esm
 
 
 ###  🏃Running the Model
+Open the cloned repository folder in you preffered IDE, select the esm env as your python interpreter and start playing around.
 
 You can find a complete example workflow, including how to run the SWBM model, plot the results, and compute correlations with observed data, in the following file:
 
