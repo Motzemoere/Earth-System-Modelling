@@ -24,13 +24,17 @@ The model requires an input CSV file with the following variables:
 
 ☔ tp_[mm]: Precipitation in mm
 
+☀️ snr_[MJ/m2]: Surface net radiation
+
+Optional: (used for correlation with observations):
+
 🌱 sm_[m3/m3]: Soil moisture
 
 🌊 ro_[m]: Runoff
 
 🔥 le_[W/m2]: Latent heat flux
 
-☀️ snr_[MJ/m2]: Surface net radiation
+
 
 An example file is provided in the data/ folder:
 📊 [`Data_swbm_Germany.csv`](data/Data_swbm_Germany.csv)
