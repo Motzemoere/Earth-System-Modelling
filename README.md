@@ -95,7 +95,7 @@ conda activate esm
 ```
 Alternatively:
 
-Use the provided `environment.yml` file to create a Python environment with all dependencies in one go:
+Use the provided [`environment.yml`](environment.yml) file to create a Python environment with all dependencies in one go:
 (this is how its normally done with bigger envs)
 
 Run and confirm this in your miniforge prompt:
