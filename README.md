@@ -84,7 +84,7 @@ If you do not have Conda installed, download and install **Miniforge** for your 
 
 🌐 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
 
-You should now have access to the Miniforge Prombt command terminal
+You should now have access to the Miniforge prompt command terminal
 
 ### 3. Create and Activate the Environment
 
