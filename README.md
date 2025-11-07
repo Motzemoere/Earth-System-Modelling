@@ -39,6 +39,7 @@ Optional: (used for correlation with observations):
 An example file is provided in the data/ folder:
 📊 [`Data_swbm_Germany.csv`](data/Data_swbm_Germany.csv)
 
+---
 ## ⚙️ Configuration
 
 The model uses a configuration dictionary with these example parameters:
@@ -61,6 +62,7 @@ config = {
 }
 ```
 
+---
 ## 🚀 Getting Started on your Local Machine
 
 Follow these steps to set up the environment and run the model.
@@ -114,6 +116,7 @@ You can find a complete example workflow, including how to run the SWBM model, p
 
 ➡️ [`run_swbm.py`](run_swbm.py)
 
+---
 ## 🚀 Getting Started on Google Colab
 ### 1. Open a new Notebook in Google Colab
 ### 2. Mount your Google Drive: (run this commands in a new code cell)
