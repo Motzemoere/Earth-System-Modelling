@@ -58,7 +58,7 @@ plt.show()
 
 
 # Plot only one year
-one_year = data[(data['time'] >= "2016-01-01") & (data['time'] <= "2016-12-31")]
+one_year = data_prepro[(data['time'] >= "2016-01-01") & (data_prepro['time'] <= "2016-12-31")]
 moisture_year = moisture[one_year.index]
 runoff_year = runoff[one_year.index]
 et_flux_year = et_flux[one_year.index]
