@@ -34,7 +34,7 @@ def prepro(raw_data):
 
 def et(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
-    return b0 * (w_i / c_s) ** g * 2
+    return b0 * (w_i / c_s) ** g #* 2 for better visualisation
 
 
 
