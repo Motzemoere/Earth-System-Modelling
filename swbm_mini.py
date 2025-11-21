@@ -34,13 +34,13 @@ def prepro(raw_data):
 
 def et(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
-    return b0 * np.minimum((w_i / c_s) ** g, 1)   # cap wi to c_s
+    return b0 * (w_i / c_s) ** g   # cap wi to c_s
 
 
 
 def runoff(w_i, c_s, a):
     """Compute runoff fraction."""
-    return (w_i / c_s) ** a
+    return np.minimum((w_i / c_s) ** a, 1)
 
 def predict(curr_moist, evapo, wrunoff, precip, rad):
     """Update soil moisture for next step."""
