@@ -32,13 +32,13 @@ def prepro(raw_data):
 #     """Compute proportion of maximum ET that occurs given current soil moisture."""
 #     return b0 * (w_i / c_s) ** g
 
-def et(b0, w_i, c_s, g):
+def et_fraction(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
     return b0 * (w_i / c_s) ** g   # cap wi to c_s
 
 
 
-def runoff(w_i, c_s, a):
+def runoff_fraction(w_i, c_s, a):
     """Compute runoff fraction."""
     return np.minimum((w_i / c_s) ** a, 1)
 
@@ -74,8 +74,8 @@ def predict_ts(data, config, n_days=None):
 
     for i in range(n_days):
         # Compute evapotrans. and runoff fractions
-        ets[i] = et(b0, moists[i], c_s, g)
-        runoffs[i] = runoff(moists[i], c_s, a)
+        ets[i] = et_fraction(b0, moists[i], c_s, g)
+        runoffs[i] = runoff_fraction(moists[i], c_s, a)
 
         # Compute soil moisture for the next timestep
         if i < n_days - 1: # Avoid updating beyond the last index
