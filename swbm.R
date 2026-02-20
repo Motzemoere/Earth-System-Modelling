@@ -38,6 +38,7 @@ prepro <- function(raw_data) {
 et_fraction <- function(b0, w_i, c_s, g) {
   #' Compute proportion of maximum ET that occurs given current soil moisture.
   #' Result is a value between 0 and b0.
+  w_i <- pmin(w_i, c_s)  # soil moisture cannot exceed water holding capacity
   b0 * (w_i / c_s) ^ g
 }
 
