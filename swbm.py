@@ -37,7 +37,8 @@ def prepro(raw_data):
 
 def et_fraction(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
-    return b0 * (w_i / c_s) ** g   # cap wi to c_s
+    w_i = np.minimum(w_i, c_s)  # soil moisture cannot exceed water holding capacity
+    return b0 * (w_i / c_s) ** g
 
 def runoff_fraction(w_i, c_s, a):
     """Compute runoff fraction."""
