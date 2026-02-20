@@ -10,7 +10,6 @@ It is designed to demonstrate the most basic version of the model.
 - 🧹 Preprocessing of input data for the water balance model
 - 💧 Simulation of **soil moisture**, **runoff**, and **evapotranspiration**
 - ⏱ Easy-to-run time series simulations
-- 📈 Plotting of results
 - 📊 Correlation analysis between model output and observed data
 
 ---
@@ -33,11 +32,6 @@ Optional: (used for correlation with observations):
 🌊 ro_[m]: Runoff
 
 🔥 le_[W/m2]: Latent heat flux
-
-
-
-An example file is provided in the data/ folder:
-📊 [`Data_swbm_Germany.csv`](data/Data_swbm_Germany.csv)
 
 ---
 ## ⚙️ Configuration
@@ -67,77 +61,56 @@ config = {
 
 Follow these steps to set up the environment and run the model.
 
-### 0. Install Git
+### 1. Install Git
 
 If you do not have Git installed on your system, download and install **Git** for your system:
 
 🌐 [Git Downloads](https://git-scm.com/downloads)
 
-### 1. Clone the Repository
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/Motzemoere/Earth-System-Modelling.git
 cd Earth-System-Modelling
 ```
 
-### 2. Install Conda
 
+### 4. Create and Activate an Environment
+The easiest way is to use pip and a virtual environment:
+```bash
+# Install Python from https://www.python.org/downloads/ if not already installed
+python -m venv esm
+source esm/bin/activate  # on Windows: esm\Scripts\activate
+pip install pandas numpy # install necessary packages
+```
+
+However I would recomend using conda:
+
+
+#### Install Conda
 If you do not have Conda installed, download and install **Miniforge** for your system:
 
 🌐 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
 
 You should now have access to the Miniforge prompt command terminal
 
-### 3. Create and Activate the Environment
-
 The easiest way is to just create the environment manually by runnning these commands in the miniforge prompt:
 ```bash
 conda create -n esm python pandas numpy matplotlib -y
 conda activate esm
 ```
-Alternatively:
 
-Use the provided [`environment.yml`](environment.yml) file to create a Python environment with all dependencies in one go:
-(this is how its normally done with bigger envs)
-
-Run and confirm this in your miniforge prompt:
-```bash
-cd Earth-System-Modelling
-conda env create -f environment.yml
-conda activate esm
-```
-
-
-
-###  🏃Running the Model
+### 4.  🏃Running the Model
 Open the cloned repository folder in you prefered IDE, select the esm env as your Python interpreter and start playing around.
 
-You can find a complete example workflow, including how to run the SWBM model, plot the results, and compute correlations with observed data, in the following file:
+You can find a complete example workflow, including how to run the SWBM model, and compute correlations with observed data, in the following file:
 
-➡️ [`run_swbm.py`](run_swbm.py)
+➡️ [`swbm.py`](swbm.py)
 
----
-## 🚀 Getting Started on Google Colab
-### 1. Open a new Notebook in Google Colab
-### 2. Mount your Google Drive: (run this commands in a new code cell)
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-# Follow the instruction to allow access to your google drive
-```
+There is also a R version of the model prvided:
 
-### 3. Clone the Repository into your Google Drive
-Open up a terminal in Google Colab  (bottom left corner) and run the following commands:
-```bash
-cd drive/MyDrive
-git clone https://github.com/Motzemoere/Earth-System-Modelling.git
-cd Earth-System-Modelling
-```
-Alternatively you could also just clone the repository to your local machine (see above) and then upload it to Google Drive.
+➡️ [`swbm.r`](run_swbm.r)
 
-### 4. Run the SWBM
-In the repository, there is a complete example flow for running the SWBM: [`run_swbm_colab.ipynb`](run_swbm_colab.ipynb).
-However, to open the script in Colab, you need to go back to **Google Drive**, navigate to the GitHub repository that you just cloned, and open the script from there using the **Open with** option, selecting Google Colaboratory.
 
 ---
 ### 📬 Contact

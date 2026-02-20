@@ -1,6 +1,13 @@
+# ==========================
+# Section 1: Import Libraries
+# ==========================
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
+# ==========================
+# Section 2: Define Functions
+# ==========================
 def prepro(raw_data):
     """ Preprocess data for SWBM
     Convert runoff, latent heat flux and solar net radiation to mm.
@@ -28,26 +35,20 @@ def prepro(raw_data):
             }
     return pd.DataFrame(data)
 
-# def et(b0, w_i, c_s, g):
-#     """Compute proportion of maximum ET that occurs given current soil moisture."""
-#     return b0 * (w_i / c_s) ** g
-
 def et_fraction(b0, w_i, c_s, g):
     """Compute proportion of maximum ET that occurs given current soil moisture."""
     return b0 * (w_i / c_s) ** g   # cap wi to c_s
-
-
 
 def runoff_fraction(w_i, c_s, a):
     """Compute runoff fraction."""
     return np.minimum((w_i / c_s) ** a, 1)
 
-def predict(curr_moist, evapo, wrunoff, precip, rad):
+def predict_sm(curr_moist, evapo, wrunoff, precip, rad):
     """Update soil moisture for next step."""
     return curr_moist + (precip - (evapo * rad) - (wrunoff * precip))
 
 def predict_ts(data, config, n_days=None):
-    """Run the SMBW for given time series
+    """Run the SWBM for given time series
 
     :param data: input data (pandas df) (time, tp, sm, ro, le, snr)
     :param config: parameters
@@ -61,7 +62,7 @@ def predict_ts(data, config, n_days=None):
     n_days = data.shape[0] if n_days is None else n_days
 
     # Initialize arrays for model outputs
-    moists, runoffs, ets = np.zeros(n_days), np.zeros(n_days), np.zeros(n_days)
+    moists, runoff_fracs, et_fracs = np.zeros(n_days), np.zeros(n_days), np.zeros(n_days)
 
     # Initial soil moisture (90% of soil water holding capacity)
     moists[0] = 0.9 * config['c_s']
@@ -73,18 +74,23 @@ def predict_ts(data, config, n_days=None):
     a = config['a']
 
     for i in range(n_days):
-        # Compute evapotrans. and runoff fractions
-        ets[i] = et_fraction(b0, moists[i], c_s, g)
-        runoffs[i] = runoff_fraction(moists[i], c_s, a)
+        # Compute evapotranspiration fraction
+        # what fraction of the available energy can actually drive evaporation right now?
+        et_fracs[i] = et_fraction(b0, moists[i], c_s, g)
+
+        # Compute runoff fraction
+        # what fraction of incoming rainfall will run off rather than soak in?
+        runoff_fracs[i] = runoff_fraction(moists[i], c_s, a)
 
         # Compute soil moisture for the next timestep
         if i < n_days - 1: # Avoid updating beyond the last index
-            moists[i + 1] = predict(moists[i], ets[i], runoffs[i],
+            moists[i + 1] = predict_sm(moists[i], et_fracs[i], runoff_fracs[i],
                                     data['tp'][i], data['snr'][i])
 
     # Convert runoff and ET fractions to actual fluxes
-    runoffs = runoffs * np.asarray(data['tp'])
-    ets = ets * np.asarray(data['snr'])
+    runoffs = runoff_fracs * np.asarray(data['tp']) # fraction × precipitation
+    ets = et_fracs * np.asarray(data['snr']) # fraction × net solar radiation
+
     return moists, runoffs, ets
 
 def model_correlation(data, model_outputs, start=None, end=None):
@@ -117,3 +123,32 @@ def model_correlation(data, model_outputs, start=None, end=None):
     corr_sum = corr_sm + corr_ro + corr_et
 
     return {'sm': corr_sm, 'ro': corr_ro, 'et': corr_et, 'sum': corr_sum}
+
+# ==========================
+# Section 3: Main Execution
+# ==========================
+
+# Define path to data file
+data = pd.read_csv("data/Data_swbm_Sweden_old.csv")
+
+# Prepare the data
+data_prepro = prepro(data)
+
+# Define initial parameters
+config = {
+    'c_s': 420,    # soil water holding capacity in mm
+    'a': 4,        # runoff function shape α
+    'g': 0.5,      # ET function shape γ
+    'b0': 0.8      # maximum of ET function β
+}
+
+# Run the SWBM model
+moisture, runoff, et_flux = predict_ts(data_prepro, config)
+
+# Compute correlation over the whole timeseries
+corrs = model_correlation(data_prepro, (moisture, runoff, et_flux))
+print("Correlation between observed data and model outputs:\n")
+print(f"Soil Moisture (sm):    {corrs['sm']:.3f}")
+print(f"Runoff (ro):           {corrs['ro']:.3f}")
+print(f"Evapotranspiration (et): {corrs['et']:.3f}")
+print(f"\nSum of correlations:   {corrs['sum']:.3f}")
