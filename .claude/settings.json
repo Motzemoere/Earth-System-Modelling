@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(file /c/Users/motze/Desktop/Earth-System-Modelling/tutorials/*.ipynb)",
+      "Bash(python3 -c \"import json; nb=json.load\\(open\\('c:/Users/motze/Desktop/Earth-System-Modelling/tutorials/05_Advanced_Python_and_Beyond.ipynb'\\)\\); print\\(json.dumps\\(nb['metadata'], indent=2\\)\\)\")",
+      "Bash(python -c \"import json; nb=json.load\\(open\\('c:/Users/motze/Desktop/Earth-System-Modelling/tutorials/05_Advanced_Python_and_Beyond.ipynb'\\)\\); print\\(json.dumps\\(nb['metadata'], indent=2\\)\\)\")"
+    ]
+  }
+}
