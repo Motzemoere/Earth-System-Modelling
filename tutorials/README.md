@@ -1,6 +1,25 @@
-# Python Tutorials for Earth System Modelling
+# 🌍 Earth-System-Modelling -> Tutorials
 
 Welcome! These tutorials teach you Python from scratch with the goal of building and understanding environmental models like the Soil-Water-Balance Model (SWBM).
+
+## Opening Your First Notebook
+
+**In VS Code:**
+1. Open the `Earth-System-Modelling` folder in VS Code (`File > Open Folder...`).
+2. Install the **Jupyter** extension (one-time setup): click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X`), search for "Jupyter", and click **Install** on the extension published by Microsoft.
+3. In the file explorer on the left, click `tutorials/01_Python_Basics_and_Data_Structures.ipynb` to open it.
+4. In the top-right corner of the notebook, click **Select Kernel** and choose the `esm` environment you created in [Setup](../setup/README.md).
+5. Click into the first code cell and press **Shift+Enter** to run it and move to the next one. Repeat top to bottom for the whole notebook.
+
+**In Google Colab:**
+1. Upload `01_Python_Basics_and_Data_Structures.ipynb` to your Google Drive.
+2. Right-click the file in Google Drive and choose **Open with > Google Colaboratory**.
+3. Click into the first code cell and press **Shift+Enter** to run it and move to the next one. Repeat top to bottom for the whole notebook.
+4. At some point you will need the provided additional data for the tutorials, so you also need to upload the **[data](../data)** folder to Google Drive.
+
+Once you're comfortable opening and running a notebook this way, work through Notebooks 2-5 below the same way, in order.
+
+---
 
 ## Tutorial Overview
 
@@ -59,12 +78,11 @@ Learn the universal structure of environmental models:
 ### Notebook 5: Advanced Python & Beyond
 **Duration:** Variable | **Level:** Advanced (Optional)
 
-Take your Python skills further with professional tools:
-- Code optimization and vectorization
-- Testing and debugging strategies
-- Creating classes and objects
-- Statistical analysis
-- Parameter optimization
+Work with real-world data quality issues and model evaluation:
+- Handling missing values (NaN) and plausibility checks
+- Time series analysis
+- Comparing multiple datasets
+- Evaluating a model against observations
 
 **Note:** This notebook goes beyond what you need for SWBM. It's optional for students interested in advancing their Python skills for future research or data science work.
 
@@ -90,7 +108,7 @@ Take your Python skills further with professional tools:
 
 - Python 3.7+ (via Anaconda/Miniconda or similar)
 - Jupyter Notebook
-- Libraries: pandas, numpy, matplotlib, scipy (install via `pip install pandas numpy matplotlib scipy`)
+- Libraries: pandas, numpy, matplotlib (install via `pip install pandas numpy matplotlib`, or see the [setup guide](../setup/README.md) for the Conda option)
 - No prior programming experience needed!
 
 ## Tips for Success
