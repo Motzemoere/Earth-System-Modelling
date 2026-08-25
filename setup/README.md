@@ -35,6 +35,8 @@ After installing the IDE you should be able to select your python environment "e
 
 Now you are setup to start coding!
 
+New materials get added to the repository as the course goes on — see [Keeping Your Copy Up to Date](../README.md#3-keeping-your-copy-up-to-date) in the main README for how to fetch them.
+
 Next
 👉 **[Go to Tutorials](tutorials/README.md)**
 
@@ -52,6 +54,8 @@ import matplotlib
 ```
 
 Now you are setup to start coding!
+
+Since Colab doesn't use git, when new materials are announced just re-open or re-upload the updated notebook rather than reusing your old copy — keep any of your own work in a separate copy first.
 
 Next
 👉 **[Go to Tutorials](tutorials/README.md)**
