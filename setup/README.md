@@ -2,7 +2,7 @@
 
 Here you find everything to set you up to start programming.
 
-You can either install python and all the necessary programs on your laptop or use google colab to work entirely in the browser, then you don't have to install anything.
+You can either install python and all the necessary programs on your laptop or use [Google Colab](https://colab.research.google.com/) to work entirely in the browser, then you don't have to install anything.
 
 ## Install Necessary Software on Your Laptop
 
