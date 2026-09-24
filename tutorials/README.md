@@ -4,18 +4,15 @@ Welcome! These tutorials teach you Python from scratch with the goal of building
 
 ## Opening Your First Notebook
 
-**In VS Code:**
-1. Open the `Earth-System-Modelling` folder in VS Code (`File > Open Folder...`).
-2. Install the **Jupyter** extension (one-time setup): click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X`), search for "Jupyter", and click **Install** on the extension published by Microsoft.
-3. In the file explorer on the left, click `tutorials/01_Python_Basics_and_Data_Structures.ipynb` to open it.
-4. In the top-right corner of the notebook, click **Select Kernel** and choose the `esm` environment you created in [Setup](../setup/README.md).
+**In Google Colab (recommended):**
+1. Go to [Google Colab](https://colab.research.google.com/) and sign in with a Google account.
+2. Go to **File → Open notebook → GitHub**.
+3. Paste the repository URL `https://github.com/Motzemoere/Earth-System-Modelling` and pick `tutorials/01_Python_Basics_and_Data_Structures.ipynb` from the list.
+4. Save your own copy via **File → Save a copy in Drive** — otherwise your changes are lost when you close the tab.
 5. Click into the first code cell and press **Shift+Enter** to run it and move to the next one. Repeat top to bottom for the whole notebook.
+6. From Notebook 2 on, the notebooks load the provided data directly from GitHub — you don't need to download anything (see [Loading the Data](../README.md#loading-the-data)).
 
-**In Google Colab:**
-1. Upload `01_Python_Basics_and_Data_Structures.ipynb` to your Google Drive.
-2. Right-click the file in Google Drive and choose **Open with > Google Colaboratory**.
-3. Click into the first code cell and press **Shift+Enter** to run it and move to the next one. Repeat top to bottom for the whole notebook.
-4. At some point you will need the provided additional data for the tutorials, so you also need to upload the **[data](../data)** folder to Google Drive.
+More materials will be added as the course progresses. When new content is announced, just open the updated notebook from GitHub again (steps 2–4) rather than reusing your old copy — your own saved copy in Drive stays untouched.
 
 Once you're comfortable opening and running a notebook this way, work through Notebooks 2-5 below the same way, in order.
 
@@ -106,9 +103,7 @@ Work with real-world data quality issues and model evaluation:
 
 ## Prerequisites
 
-- Python 3.7+ (via Anaconda/Miniconda or similar)
-- Jupyter Notebook
-- Libraries: pandas, numpy, matplotlib (install via `pip install pandas numpy matplotlib`, or see the [setup guide](../setup/README.md) for the Conda option)
+- A Google account for [Google Colab](../README.md#getting-started-with-google-colab) — or, to work offline, Python 3.10+ with pandas, numpy and matplotlib (see the [local setup guide](../setup/README.md))
 - No prior programming experience needed!
 
 ## Tips for Success

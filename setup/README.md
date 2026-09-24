@@ -1,29 +1,58 @@
-# 🌍 Earth-System-Modelling -> Setup
+# 🌍 Earth-System-Modelling -> Local Setup (Optional)
 
-Here you find everything to set you up to start programming.
+This guide is only needed if you want to work on your own laptop instead of [Google Colab](../README.md#getting-started-with-google-colab) (e.g. no reliable internet connection or to work offline).
 
-You can either install python and all the necessary programs on your laptop or use [Google Colab](https://colab.research.google.com/) to work entirely in the browser, then you don't have to install anything.
+We only need a handful of packages, so a plain Python installation with a virtual environment is enough.
 
-## Install Necessary Software on Your Laptop
+## 1. Install Git
 
-### 1. Install Conda
-If you do not have Conda installed, download and install **Miniforge** for your system. This allows you to have separate working environments to install programs and packages.
+If you do not have Git installed on your system, download and install **Git** for your system:
 
-🌐 [Miniforge Releases](https://github.com/conda-forge/miniforge/releases?after=4.10.3-0)
+🌐 [Git Downloads](https://git-scm.com/downloads)
 
-You should now have access to the Miniforge prompt command terminal
+## 2. Clone the Repository
 
-### 2. Install Python and Required Packages
-The easiest way is to just create the environment manually by running these commands in the miniforge prompt:
+Open up a terminal (Windows: search "Git Bash" in the Start menu; Mac: search "Terminal" in Spotlight), navigate to the folder where you want to store the course materials (e.g. `cd Documents`), and clone this repo:
+
 ```bash
-conda create -n esm python pandas numpy matplotlib ipykernel -y
-conda activate esm
+git clone https://github.com/Motzemoere/Earth-System-Modelling.git
+cd Earth-System-Modelling
 ```
 
-### 3. Install Your IDE of Choice
+Now you have this repository on your computer and can use and work with all the files.
+
+## 3. Install Python
+Download and install Python (3.10 or newer) from 🌐 [python.org](https://www.python.org/downloads/).
+
+- **Windows:** tick **"Add python.exe to PATH"** at the bottom of the first installer screen.
+- **macOS:** use the installer from python.org (the preinstalled system Python may be outdated).
+- **Linux:** Python is usually already installed; you may need to install the `venv` module, e.g. `sudo apt install python3-venv`.
+
+Check that it works by opening a terminal (Windows: "Command Prompt") and running `python --version` (macOS/Linux: `python3 --version`).
+
+## 4. Create a Virtual Environment and Install the Packages
+A virtual environment is a separate folder that holds the packages for this course, so they don't interfere with anything else on your laptop. In the terminal, go to the `Earth-System-Modelling` folder and run:
+
+**Windows (Command Prompt):**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install pandas numpy matplotlib ipykernel
+```
+
+**macOS / Linux:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pandas numpy matplotlib ipykernel
+```
+
+You only need to do this once. `(.venv)` at the start of your terminal line shows the environment is active.
+
+## 5. Install Your IDE of Choice
 The IDE (integrated development environment) will facilitate coding with syntax highlighting, file browsing and many more useful things.
 
-For this course it doesn't matter which IDE you use, but here are some examples. I would recommend VS Code.
+For this course it doesn't matter which IDE you use, but here are some examples. I would recommend VS Code (with the *Python* and *Jupyter* extensions).
 
 [VS Code](https://code.visualstudio.com/) most commonly used in our field
 
@@ -31,52 +60,44 @@ For this course it doesn't matter which IDE you use, but here are some examples.
 
 [PyCharm](https://www.jetbrains.com/pycharm/) mostly used in web development
 
-After installing the IDE you should be able to select your python environment "esm" you created earlier.
+In any IDE, open the `Earth-System-Modelling` folder and select the `.venv` environment you created earlier as your Python interpreter / notebook kernel.
+
+**Opening your first notebook in VS Code:**
+1. Open the `Earth-System-Modelling` folder in VS Code (`File > Open Folder...`).
+2. Install the **Jupyter** extension (one-time setup): click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X`), search for "Jupyter", and click **Install** on the extension published by Microsoft.
+3. In the file explorer on the left, click `tutorials/01_Python_Basics_and_Data_Structures.ipynb` to open it.
+4. In the top-right corner of the notebook, click **Select Kernel** and choose the `.venv` environment you created in step 4.
+5. Click into the first code cell and press **Shift+Enter** to run it and move to the next one. Repeat top to bottom for the whole notebook.
 
 Now you are setup to start coding!
 
-New materials get added to the repository as the course goes on — see [Keeping Your Copy Up to Date](../README.md#3-keeping-your-copy-up-to-date) in the main README for how to fetch them.
+**Working offline:** the notebooks load the data from GitHub via the variable `DATA_URL`. Without internet, change it to the local `data` folder of your cloned repository:
+
+```python
+DATA_URL = '../data/'
+```
+
+## 6. Keeping Your Copy Up to Date
+
+More materials will be added to this repository as the course progresses. Whenever new content is announced, open a terminal in the `Earth-System-Modelling` folder and run:
+
+```bash
+git pull
+```
+
+**Important:** Don't edit the tutorial notebooks directly, since git can't merge your changes with updates to the same file. Instead, work in a copy (e.g. save `tutorial_2.ipynb` as `tutorial_2_mywork.ipynb`) or in your own separate files. That way `git pull` will always go smoothly and never overwrite your work.
+
+**If `git pull` refuses because of local changes:**
+
+If you did edit a tracked file and see an error like `Your local changes would be overwritten by merge`, temporarily set your changes aside, pull, then bring them back:
+
+```bash
+git stash
+git pull
+git stash pop
+```
+
+This stores your edits, updates the repo, and then reapplies your edits on top. If `git stash pop` reports a conflict, don't try to resolve it blindly — reach out (see [Contact](../README.md#contact)) since it usually means you and the update changed the same lines.
 
 Next
-👉 **[Go to Tutorials](tutorials/README.md)**
-
-
-## Using Google Colab
-
-Go to [Google Colab](https://colab.research.google.com/) and open up a new notebook
-
-All the packages we need are already installed in google colab you can just import them by running:
-
-```python
-import pandas
-import numpy
-import matplotlib
-```
-
-### Getting the Data into Colab
-
-Colab can't see the files on your laptop, so put the data on Google Drive and connect ("mount") your Drive to the notebook:
-
-1. Download the `data` folder from this repository and upload it to your [Google Drive](https://drive.google.com/), e.g. into a folder `MyDrive/ESM/data`.
-2. In your Colab notebook, mount Google Drive by running the following cell and allowing access when asked:
-
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-```
-
-3. Your Drive files are now available under `/content/drive/MyDrive/`, so you can load the data like this:
-
-```python
-import pandas as pd
-data = pd.read_csv('/content/drive/MyDrive/ESM/data/Data_swbm_Germany.csv')
-```
-
-You can also browse your Drive files via the 📁 folder icon on the left sidebar of Colab (right-click a file → "Copy path" to get its path). You need to re-run the mount cell every time you open the notebook in a new session.
-
-Now you are setup to start coding!
-
-Since Colab doesn't use git, when new materials are announced just re-open or re-upload the updated notebook rather than reusing your old copy — keep any of your own work in a separate copy first.
-
-Next
-👉 **[Go to Tutorials](tutorials/README.md)**
+👉 **[Go to Tutorials](../tutorials/README.md)** skip the google colab part
