@@ -42,7 +42,7 @@ Master the tools for handling real environmental data:
 - Filtering and analyzing datasets
 - Basic statistics and visualization
 
-**What you'll work with:** Real precipitation and soil moisture data from Germany, Spain, and Sweden.
+**What you'll work with:** Real precipitation and soil moisture data from Germany.
 
 ---
 
@@ -78,7 +78,7 @@ Learn the universal structure of environmental models:
 Work with real-world data quality issues and model evaluation:
 - Handling missing values (NaN) and plausibility checks
 - Time series analysis
-- Comparing multiple datasets
+- Multi-panel and dual-axis plots
 - Evaluating a model against observations
 
 **Note:** This notebook goes beyond what you need for SWBM. It's optional for students interested in advancing their Python skills for future research or data science work.

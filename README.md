@@ -23,7 +23,7 @@ DATA_URL = 'https://raw.githubusercontent.com/Motzemoere/Earth-System-Modelling/
 data = pd.read_csv(DATA_URL + 'Data_swbm_Germany.csv')
 ```
 
-Just replace the file name to load `Data_swbm_Spain.csv` or `Data_swbm_Sweden.csv`. See the [data description](data/README.md) for the locations, columns and units of the datasets.
+See the [data description](data/README.md) for the location, columns and units of the dataset.
 
 ---
 
