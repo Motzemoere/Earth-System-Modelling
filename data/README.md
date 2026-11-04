@@ -1,10 +1,12 @@
 # 🌍 Earth-System-Modelling -> Data
 
-Daily time series for a single ERA5 grid cell in Germany, covering **2008-01-01 to 2018-12-31** (4018 days).
+Daily time series for three ERA5 grid cells, each covering **2008-01-01 to 2018-12-31** (4018 days). All files share the same columns.
 
 | File | Location (lon, lat) |
 |------|---------------------|
 | `Data_swbm_Germany.csv` | 8.125 °E, 48.125 °N |
+| `Data_swbm_Spain.csv` | 3.625 °W, 38.625 °N |
+| `Data_swbm_Sweden.csv` | 16.375 °E, 63.625 °N |
 
 ## Columns
 
