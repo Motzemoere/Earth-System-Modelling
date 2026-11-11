@@ -6,7 +6,7 @@ Here you find the most basic version of the Simple Water Balance Model (SWBM):
 
 **Already familiar with Python?** You can find a complete example workflow for running the SWBM model in:
 
-➡️ [`swbm.py`](swbm.py)
+➡️ [`swbm.py`](swbm.py) — or as a notebook for Colab: [`swbm.ipynb`](swbm.ipynb)
 
 There is also an R version of the model provided:
 
