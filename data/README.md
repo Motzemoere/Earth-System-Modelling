@@ -14,7 +14,7 @@ Daily time series for three ERA5 grid cells, each covering **2008-01-01 to 2018-
 |--------|------|-------------|
 | `time` | — | Date (YYYY-MM-DD) |
 | `longitude` / `latitude` | ° | Grid cell centre |
-| `snr_[MJ/m2]` | MJ m⁻² | Net solar radiation |
+| `snr_[MJ/m2]` | MJ m⁻² | Surface net radiation (shortwave + longwave, daily sum; negative when the surface loses more energy than it receives) |
 | `tp_[mm]` | mm | Total precipitation |
 | `ro_[m]` | m | Surface runoff |
 | `sm_[m3/m3]` | m³ m⁻³ | Volumetric soil moisture (observed) |

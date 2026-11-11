@@ -1,6 +1,6 @@
 # 🌍 Earth-System-Modelling -> Tutorials
 
-Welcome! These tutorials teach you Python from scratch with the goal of building and understanding environmental models like the Soil-Water-Balance Model (SWBM).
+Welcome! These tutorials teach you Python from scratch with the goal of building and understanding environmental models like the Simple Water Balance Model (SWBM).
 
 ## Opening Your First Notebook
 

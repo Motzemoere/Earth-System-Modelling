@@ -44,6 +44,14 @@ These tutorials are designed for complete beginners and guide you from Python fu
 
 ---
 
+## The Simple Water Balance Model (SWBM)
+
+A complete reference implementation of the SWBM in Python and R, with a diagram of how its functions work together.
+
+👉 **[Go to the Model](model/README.md)**
+
+---
+
 ### Contact
 
 If you have any questions, feel free to reach out:
